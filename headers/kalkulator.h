@@ -15,6 +15,7 @@ public:
 	void calculate_expr(std::queue<std::string> rpn);
 	std::queue<std::string> to_rp (void);
 	void remove_spaces(void);
+	bool ask_continue(void);
 	void print_result(void);
 	myCalc() : expr(""), result(0) {};
 	~myCalc(){};

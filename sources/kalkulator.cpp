@@ -61,7 +61,7 @@ void myCalc::calculate_expr(std::queue<std::string> rpn) {
 					break;
 				case '^': numbers.push(std::pow(a,b)); break;
 				case 'p': numbers.push(std::pow(a,b)); break;
-				case '%': numbers.push(std::fmod(a,b)); break;
+				case '%': numbers.push((a * b )/100); break;
 			}
 		}
 		
@@ -155,7 +155,13 @@ void myCalc::print_result(void){
 }
 
 
+bool myCalc::ask_continue(void){
+	std::string response;
+	std::cout << "\n Cy chcesz kontynuować ? (t/n)";
+	std::getline(std::cin, response);
 
+	return (response == "t" || response ==  "T");
+}
 
 
 
