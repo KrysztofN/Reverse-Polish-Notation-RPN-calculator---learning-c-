@@ -30,17 +30,14 @@ void myCalc::greet(void){
 
 void myCalc::insert_expr(void){
 	
-	std::string expr;
-
 	std::cout << "\n\nPodaj wyrażenie do obliczenia: \n";
 	std::getline(std::cin, this->expr);
 }
 
-double myCalc::calculate_expr(std::queue<std::string> rpn) {
+void myCalc::calculate_expr(std::queue<std::string> rpn) {
 
 	std::cout<< "\nObliczam wyrazenie: " << this->expr << std::endl; 
 	
-	std::queue<std::string> rpn = myCalc::to_rp();
 	std::stack<double> numbers;
 
 	while(!rpn.empty()){
@@ -58,11 +55,11 @@ double myCalc::calculate_expr(std::queue<std::string> rpn) {
 				case '/': 
 					if(b == 0) {
 						std::cout << "Error: Division by zero!!!" << std::endl;
-						return 0;
+						return;
 					}
 					numbers.push(a / b); 
 					break;
-				case '^': numbers.push(a ^ b); break;
+				case '^': numbers.push(std::pow(a,b)); break;
 				case 'p': numbers.push(std::pow(a,b)); break;
 				case '%': numbers.push(std::fmod(a,b)); break;
 			}
@@ -74,7 +71,7 @@ double myCalc::calculate_expr(std::queue<std::string> rpn) {
 	}
 
 
-	return numbers.empty() ? 0 : numbers.top();
+	this->result =  numbers.empty() ? 0 : numbers.top();
 }
 
 void myCalc::remove_spaces(void){
@@ -153,7 +150,9 @@ std::queue<std::string> myCalc::to_rp (void){
 }
 
 
-
+void myCalc::print_result(void){
+	std::cout << "\nWynik działania: " << this->result << std::endl;
+}
 
 
 
