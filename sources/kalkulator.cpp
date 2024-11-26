@@ -17,13 +17,13 @@ void myCalc::greet(void) {
    |  ___ ___ ___   ___  |
    | | 7 | 8 | 9 | | + | |	Miłego korzystania;)
    | |___|___|___| |___| |
-   | | 4 | 5 | 6 | | - | |     Opcje pamięci:
-   | |___|___|___| |___| |     M+ (dodaj do pamięci)
-   | | 1 | 2 | 3 | | x | |     M- (odejmij od pamięci)
-   | |___|___|___| |___| |     MC (wyczyść pamięć)
-   | | . | 0 | = | | / | |     MR (przywołaj z pamięci)
+   | | 4 | 5 | 6 | | - | |      Opcje pamięci:
+   | |___|___|___| |___| |      M+ (dodaj do pamięci)
+   | | 1 | 2 | 3 | | x | |      M- (odejmij od pamięci)
+   | |___|___|___| |___| |      MC (wyczyść pamięć)
+   | | . | 0 | = | | / | |      MR (przywołaj z pamięci)
    | |___|___|___| |___| |	
-   |_____________________|     Autor: Krzysztof Nowak WCY23IY2S1
+   |_____________________|      Autor: Krzysztof Nowak WCY23IY2S1
     )" << std::endl;	
 }
 
