@@ -1,20 +1,16 @@
-#include <iostream>
 #include "../headers/kalkulator.h"
+#include <iostream>
 
-	
-
-int main(){
-	
-	myCalc calculator;
-	calculator.greet();
-
-	bool continue_calc = true;
-	while(continue_calc) {
-
-		calculator.insert_expr();
-		calculator.calculate_expr(calculator.to_rp());
-		calculator.print_result();
-		continue_calc = calculator.ask_continue();
-	}
-	return 0;
+int main() {
+    myCalc calc;
+    calc.greet();
+    
+    while(true) {
+        calc.insert_expr();
+        std::queue<std::string> rpn = calc.to_rp();
+        calc.calculate_expr(rpn);
+        calc.print_result();
+    }
+    
+    return 0;
 }
