@@ -52,7 +52,10 @@ public:
     void mult_numbers();
     void div_numbers();
     void mod_numbers();
+    void percentage();
     void pow_numbers();
+    void square_number();
+    void square_root_numbers();
     void remove_spaces(void);
     void print_result(void);
     double getResult() const { return result; }

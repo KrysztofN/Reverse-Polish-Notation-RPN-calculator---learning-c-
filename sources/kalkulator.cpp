@@ -105,8 +105,10 @@ void myCalc::calculate_expr(std::queue<std::string> rpn) {
                 case '-': substr_numbers(); break;
                 case '*': mult_numbers(); break;
                 case '/': div_numbers(); break;
-                case 's': pow_numbers(); break;
-                case '%': mod_numbers(); break;
+                case 's': square_number(); break;
+                case '%': percentage(); break;
+                case '^': pow_numbers(); break;
+                case 'p': square_root_numbers(); break;
             }
         } else {
             try {
@@ -159,10 +161,34 @@ void myCalc::div_numbers(void) {
     }
 }
 
-void myCalc::pow_numbers() {
+void myCalc::square_number() {
     if(!numbers.empty()) {
         double a = numbers.top(); numbers.pop();
         numbers.push(std::pow(a, 2));
+    }
+}
+
+void myCalc::square_root_numbers(void) {
+    if(numbers.size() >= 2) {
+        double b = numbers.top(); numbers.pop();
+        double a = numbers.top(); numbers.pop();
+        numbers.push(std::pow(a, 1/b));
+    }
+}
+
+void myCalc::pow_numbers() {
+    if(!numbers.empty()) {
+        double b = numbers.top(); numbers.pop();
+        double a = numbers.top(); numbers.pop();
+        numbers.push(std::pow(a, b));
+    }
+}
+
+void myCalc::percentage() {
+    if(!numbers.empty()) {
+        double b = numbers.top(); numbers.pop();
+        double a = numbers.top(); numbers.pop();
+        numbers.push(a*b/100);
     }
 }
 
@@ -187,13 +213,13 @@ int myCalc::get_priority(char op) {
     switch(op) {
         case '+': case '-': return 1;
         case '*': case '/': return 2;
-        case 's': case '%': return 3;
+        case 's': case '%': case '^': case 'p': return 3;
         default: return 0;
     }
 }
 
 bool myCalc::is_operator(char c) {
-    return (c == '-' || c == '+' || c == 's' || c == '/' || c == '*' || c == '%');
+    return (c == '-' || c == '+' || c == 's' || c == '/' || c == '*' || c == '%' || c == '^' || c == 'p');
 }
 
 std::queue<std::string> myCalc::to_rp(void) {
@@ -241,7 +267,7 @@ std::queue<std::string> myCalc::to_rp(void) {
                 output.push(op);
                 operators.pop();
             }
-            if(!operators.empty()) operators.pop();  // Remove '('
+            if(!operators.empty()) operators.pop();  
         }
     }
 
